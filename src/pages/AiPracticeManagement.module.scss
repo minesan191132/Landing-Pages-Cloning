@@ -1,0 +1,389 @@
+@import '../styles/variables';
+
+.pageWrapper {
+  background-color: #000;
+  color: #fff;
+  font-family: $font-system;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 0;
+}
+
+.heroSection {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 160px 24px 100px;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0%, #2F2C2A 70%);
+}
+
+.stoneImage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140vw;
+  max-width: none;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  
+  @media (min-width: 768px) {
+    width: auto;
+    height: 880px;
+    top: -20%;
+  }
+}
+
+.heroGradientBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 100%);
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 800px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: hero-rise 0.5s forwards;
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: $font-display;
+  
+  .heroWord {
+    display: inline-block;
+    opacity: 0;
+    animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 0.08}s; }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #fff;
+  max-width: 424px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.ctaButton {
+  margin-top: 16px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  animation: hero-rise 0.5s forwards;
+  animation-delay: 0.8s;
+  transition: opacity 0.2s;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@keyframes hero-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mainContent {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 80px;
+  max-width: 1512px;
+  margin: 0 auto;
+}
+
+.dividerContainer {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 0 24px;
+  
+  @media (min-width: 768px) {
+    padding: 0 40px;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #1a1a1a;
+}
+
+.featuresGrid {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 96px;
+    padding: 48px 40px;
+  }
+}
+
+.featureItem {
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+    max-width: none;
+  }
+  
+  @media (min-width: 1024px) {
+    flex-direction: column;
+    gap: 28px;
+    max-width: 240px;
+  }
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+.featureIcon {
+  width: 24px;
+  height: 24px;
+  filter: invert(1);
+}
+
+.featureItemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featureItemTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.featureItemDesc {
+  font-size: 16px;
+  color: #a1a1aa;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.showcaseSection {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  
+  @media (min-width: 768px) {
+    padding: 40px 40px 80px;
+  }
+}
+
+.showcaseTitle {
+  font-size: 32px;
+  font-family: $font-display;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 40px;
+  
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+}
+
+.showcaseGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.showcaseCard {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000 -20%, #2F2C2A 80%);
+  display: flex;
+  flex-direction: column;
+  
+  @media (min-width: 768px) {
+    height: 560px;
+  }
+}
+
+.showcaseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.showcaseContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+}
+
+.showcaseCardTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.showcaseCardDesc {
+  font-size: 16px;
+  color: #a1a1aa;
+  margin: 0;
+}
+
+.nextModuleSection {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  
+  @media (min-width: 768px) {
+    padding: 40px 40px 80px;
+  }
+}
+
+.nextModuleLabel {
+  font-size: 16px;
+  color: #a1a1aa;
+  margin-bottom: 12px;
+}
+
+.nextModuleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.nextModuleTitle {
+  font-size: 32px;
+  font-family: $font-display;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+}
+
+.nextModuleLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 32px;
+  font-family: $font-display;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  
+  &:hover {
+    opacity: 0.6;
+  }
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 48px;
+    
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

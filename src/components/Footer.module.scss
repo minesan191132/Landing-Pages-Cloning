@@ -1,0 +1,113 @@
+@import '../styles/variables';
+
+.footer {
+  padding: $spacing-lg 24px 0 24px;
+  border-top: 1px solid $border-color;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1512px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 60px;
+}
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 64px;
+  
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+}
+
+.brandInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 440px;
+}
+
+.logo {
+  color: $text-primary;
+}
+
+.brandDescription {
+  color: #666;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  img {
+    height: 48px;
+    width: auto;
+  }
+}
+
+.copyright {
+  color: #666;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.linksSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  
+  @media (min-width: 640px) {
+    gap: 80px;
+  }
+}
+
+.linkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  h4 {
+    color: #666;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  
+  a {
+    color: $text-primary;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.watermarkContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 0 24px;
+}
+
+.watermarkImage {
+  width: 100%;
+  height: auto;
+  max-width: 1512px;
+}

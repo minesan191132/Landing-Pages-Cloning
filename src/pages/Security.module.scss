@@ -1,0 +1,238 @@
+@import '../styles/variables';
+
+.pageWrapper {
+  background-color: #000;
+  color: #fff;
+  font-family: $font-system;
+  min-height: 100vh;
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.heroSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 24px 80px;
+  min-height: 50vh;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0%, #36393E 70%);
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* Đã sửa: Chuyển màu xám mượt mà rồi hòa tan hẳn vào đen tuyền (#000) ở đáy */
+  background: linear-gradient(
+    180deg, 
+    transparent 0%, 
+    #36393E 70%, 
+    #000000 100%
+  );
+}
+
+
+.heroImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120vw;
+  max-width: none;
+  pointer-events: none;
+  z-index: 0;
+  
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: translateY(-20%);
+    
+    @media (min-width: 768px) {
+      width: auto;
+      height: 880px;
+      transform: translateY(-40%);
+    }
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 9999px;
+  background-color: #262626;
+  padding: 6px 12px 6px 10px;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 24px;
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.heroTitle {
+  font-size: 48px;
+  font-family: $font-display;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  max-width: 960px;
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  opacity: 0;
+  
+  @media (min-width: 768px) {
+    font-size: 72px;
+  }
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  color: #a1a1aa;
+  max-width: 424px;
+  margin: 0 auto;
+  line-height: 1.5;
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+@keyframes hero-rise {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.contentWrapper {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 0 24px;
+  
+  @media (min-width: 768px) {
+    padding: 0 40px;
+  }
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #262626;
+  margin: 40px 0;
+}
+
+.badgeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 48px 0;
+  }
+}
+
+.badgeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.badgeIcon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 16px;
+  
+  img, svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.emptyBadgeIcon {
+  width: 24px;
+  height: 24px;
+  background-color: #333;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.badgeTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.badgeDesc {
+  font-size: 16px;
+  color: #a1a1aa;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sectionGrid {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 96px;
+    padding: 48px 0;
+  }
+}
+
+.sectionHeader {
+  flex-shrink: 0;
+  
+  @media (min-width: 1024px) {
+    width: 400px;
+  }
+  @media (min-width: 1280px) {
+    width: 572px;
+  }
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-family: $font-display;
+  margin: 0 0 8px 0;
+  font-weight: 400;
+}
+
+.gridContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  width: 100%;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

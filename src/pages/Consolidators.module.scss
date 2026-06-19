@@ -1,0 +1,121 @@
+@import '../styles/variables';
+
+.pageWrapper {
+  background-color: #000;
+  color: #fff;
+  font-family: $font-system;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 0;
+}
+
+.heroSection {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 160px 24px 100px;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0%, #36393E 70%);
+}
+
+.stoneImage {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140vw;
+  max-width: none;
+  z-index: 1;
+  pointer-events: none;
+  
+  @media (min-width: 768px) {
+    width: auto;
+    height: 880px;
+    top: -80%;
+  }
+}
+
+.heroGradientBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 100%);
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 800px;
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: $font-display;
+  
+  .heroWord {
+    display: inline-block;
+    opacity: 0;
+    animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    
+    &:nth-child(1) { animation-delay: 0s; }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #fff;
+  max-width: 424px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.35s;
+}
+
+@keyframes hero-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mainContent {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 80px;
+  max-width: 1512px;
+  margin: 0 auto;
+}

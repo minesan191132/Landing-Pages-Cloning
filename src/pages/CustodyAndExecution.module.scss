@@ -1,0 +1,406 @@
+@import '../styles/variables';
+
+/* Variables mirroring the dark obsidian-like theme */
+$bg-color: #000;
+$gradient-mid: #28232B;
+$text-foreground: #ffffff;
+$text-muted: #a3a3a3;
+$badge-bg: rgba(255, 255, 255, 0.1);
+$badge-hover: rgba(255, 255, 255, 0.15);
+$divider-color: rgba(255, 255, 255, 0.1);
+$font-sans: 'Inter', system-ui, sans-serif;
+
+@keyframes hero-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageWrapper {
+  background-color: $bg-color;
+  color: $text-foreground;
+  font-family: $font-sans;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 0; /* Removed padding to let hero background go under navbar */
+}
+
+/* --- Hero Section --- */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 160px 24px 100px; /* Increased top padding to account for navbar */
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #000 0%, $gradient-mid 70%);
+}
+
+.stonesContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  
+  .stoneLeft {
+    position: absolute;
+    top: -458px;
+    left: -433px;
+    height: 879px;
+    width: 1670px;
+    max-width: none;
+    opacity: 1;
+    @media (max-width: 768px) {
+      top: -140px;
+      left: -30%;
+      height: 420px;
+      width: 800px;
+    }
+  }
+  
+  .stoneRight {
+    position: absolute;
+    top: 200px;
+    right: -646px;
+    height: 879px;
+    width: 1670px;
+    max-width: none;
+    opacity: 1;
+    @media (max-width: 768px) {
+      top: 80px;
+      right: -200px;
+      height: 420px;
+      width: 800px;
+    }
+  }
+}
+
+.heroGradientBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 3;
+  background: linear-gradient(180deg, rgba($gradient-mid, 0) 0%, #000 100%);
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 800px;
+  margin-top: -60px; /* Adjust to center vertically considering the divider */
+}
+
+.badgeWrapper {
+  animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: $badge-bg;
+  border-radius: 999px;
+  padding: 6px 12px 6px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(16px);
+  color: $text-foreground;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: $badge-hover;
+  }
+  
+  .badgeIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: $font-display;
+  
+  .heroWord {
+    display: inline-block;
+    opacity: 0;
+    animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    
+    &:nth-child(1) { animation-delay: 0s; }
+    &:nth-child(2) { animation-delay: 0.1s; }
+    &:nth-child(3) { animation-delay: 0.2s; }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  color: $text-foreground;
+  max-width: 424px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.4s;
+  letter-spacing: 0;
+}
+
+/* --- Features Highlights --- */
+.dividerContainer {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 100px; /* Pushed down significantly */
+  padding: 0 24px;
+  
+  .divider {
+    height: 1px;
+    width: 100%;
+    background-color: $divider-color;
+  }
+}
+
+.highlightsContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 60px; /* Also pushed down */
+  padding: 0 24px;
+}
+
+.highlightsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+.highlightCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 280px;
+  
+  .iconWrapper {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    
+    .featureIcon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  }
+  
+  .highlightTextWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .highlightTitle {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    color: $text-foreground;
+  }
+  
+  .highlightDesc {
+    font-size: 1rem;
+    color: $text-muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+/* --- Main Content --- */
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.contentSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHeader {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 0 0 40px 0;
+  letter-spacing: -0.02em;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+/* Showcase Section */
+.showcaseCard {
+  width: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(180deg, #000 -20%, #28232b 80%);
+}
+
+.showcaseImagePlaceholder {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  .showcaseImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  @media (min-width: 768px) {
+    height: 600px;
+  }
+}
+
+.showcaseOverlay {
+  padding: 32px;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+  position: relative;
+  z-index: 1;
+  
+  .showcaseTitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+  }
+  
+  .showcaseDesc {
+    color: $text-muted;
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+/* Row Sections (Trading, Wrappers, Safekeeping) */
+.sectionRow {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.rowTitle {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  flex-shrink: 0;
+  
+  @media (min-width: 1024px) {
+    width: 400px;
+  }
+}
+
+.rowGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex-grow: 1;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  
+  .iconWrapper {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+    
+    .featureIcon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  
+  .itemTextWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .itemDesc {
+    color: $text-muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.sectionDivider {
+  height: 1px;
+  width: 100%;
+  background-color: $divider-color;
+  margin-top: 60px;
+}

@@ -1,0 +1,191 @@
+@import '../styles/variables';
+
+.section {
+  padding: $spacing-lg 24px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1512px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.header {
+  h2 {
+    font-size: $text-32;
+    font-family: $font-display;
+    color: $text-primary;
+    font-weight: 500;
+    margin: 0;
+    
+    @media (min-width: 768px) {
+      font-size: $text-52;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row; /* Image is first in HTML, so it will be on the left */
+    align-items: stretch;
+    gap: 120px;
+  }
+}
+
+.imageColumn {
+  flex: 1.2;
+  position: relative;
+  width: 100%;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  border: 1px solid $border-color;
+  
+  @media (min-width: 1024px) {
+    height: auto;
+  }
+
+  @media (max-width: 1023px) {
+    aspect-ratio: 16 / 11;
+  }
+}
+
+.featureImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+
+  &.activeImage {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.textColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  max-width: 520px;
+}
+
+.headerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .itemTitle {
+    font-size: $text-32;
+    font-family: $font-display;
+    color: $text-primary;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: $text-16;
+    color: $text-secondary;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+/* Accordion Styles */
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.accordionItem {
+  position: relative;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .itemHeader h4 {
+    font-size: $text-14;
+    font-weight: 500;
+    color: $text-secondary;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  /* CSS Grid trick for smooth height transition */
+  .itemContentWrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+  }
+
+  .itemContent {
+    overflow: hidden;
+    min-height: 0;
+    
+    p {
+      padding-top: 16px;
+      margin: 0;
+      font-size: $text-14;
+      line-height: 1.6;
+      color: $text-secondary;
+    }
+  }
+
+  &.active {
+    .itemHeader h4 {
+      color: $text-primary;
+      font-weight: 600;
+    }
+    
+    .itemContentWrapper {
+      grid-template-rows: 1fr;
+    }
+  }
+}
+
+/* Progress Bar at the TOP */
+.progressBarContainer {
+  position: absolute;
+  top: -1px; /* Align with the top border */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 0%;
+  background-color: $text-primary;
+  
+  &.filling {
+    animation-name: progressFill;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+  }
+  
+  /* Removed paused state as per user request to keep counting on hover */
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}

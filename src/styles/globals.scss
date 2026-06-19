@@ -1,0 +1,59 @@
+@import 'variables';
+
+@font-face {
+  font-family: 'Inter Variable';
+  src: url('../assests/font/inter-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IvoryLLWeb-Light';
+  src: url('../assests/font/IvoryLLWeb-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-system;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: $bg-main;
+  color: $text-primary;
+  font-family: $font-main;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header, astro-island {
+  font-family: $font-main;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-word, 
+.heroWord, 
+.text-display-extra-small {
+  font-family: $font-display;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}

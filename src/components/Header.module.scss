@@ -1,0 +1,110 @@
+  @import '../styles/variables';
+
+  .header {
+    position: fixed;
+    top: 12px;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1480px;
+    border-radius: $radius-full;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+    background: transparent;
+
+    &.scrolled {
+      border-color: $border-color;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: -1;
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 51;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    color: $text-primary;
+    
+    svg {
+      height: 28px;
+      width: auto;
+    }
+  }
+
+  .navLinks {
+    display: none;
+    align-items: center;
+    gap: 32px;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
+
+  .navItem {
+    position: relative;
+  }
+
+  .navBtn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .navBtn, .navLink {
+    color: $text-secondary;
+    font-size: $text-14;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    padding: 8px 0;
+    
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  .ctaButton {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    height: 36px;
+    border-radius: $radius-full;
+    background-color: $bg-secondary;
+    color: $text-primary;
+    font-size: $text-14;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: $bg-secondary-hover;
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
+

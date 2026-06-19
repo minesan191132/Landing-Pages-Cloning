@@ -1,0 +1,148 @@
+@import '../styles/variables';
+
+.dropdownContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $text-secondary;
+  font-size: $text-14;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 8px 0; /* Trả lại padding cũ để không làm giãn header */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.chevron {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #111111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  
+  padding: 100px 0 48px 0;
+  
+  display: flex;
+  justify-content: center;
+
+  z-index: -1; 
+  
+  /* Animation states */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* Chuyển cảnh mượt với cubic-bezier */
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.panelOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none; /* Không bắt sự kiện chuột trên vùng đen trống */
+}
+
+.dropdownGrid {
+  display: flex;
+  gap: 10px; /* Khoảng cách giữa 2 thẻ */
+  max-width: 1480px;
+  padding: 0 24px;
+  pointer-events: auto; /* Bắt sự kiện chuột trên vùng chứa nội dung */
+  position: relative;
+
+  /* Tạo một cầu nối (bridge) vô hình để chuột không bị mất hover khi di chuyển từ Header xuống Grid */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px; /* Khớp với padding top của panel */
+    left: 0;
+    width: 100%;
+    height: 100px;
+  }
+}
+
+.dropdownItem {
+  display: flex;
+  flex-direction: column;
+  width: 270px; /* Độ rộng của mỗi card */
+  text-decoration: none;
+  group: true;
+  
+  &:hover {
+    .imageCard {
+      background-color: #2a2a2a;
+    }
+  }
+}
+.imageCard {
+  width: 270px;
+  height: 280px;
+  background-color: #1f1f1f;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mockImage {
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.02)" width="100" height="100"/></svg>');
+}
+
+.navImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  letter-spacing: -.02em;
+  font-size: $text-20;
+  font-family: $font-display;
+  line-height: 1.625rem;
+  color: $text-primary;
+  font-weight: 500;
+}
+
+.description {
+  letter-spacing: .01em;
+  font-size: $text-12;
+  font-weight: 400;
+  color: $text-secondary;
+  line-height: 1.125rem;
+}
+
+
