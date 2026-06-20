@@ -8,6 +8,8 @@ import Integrations from './pages/Integrations';
 import Security from './pages/Security';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Pricing from './pages/Pricing';
+import About from './pages/About';
 
 function App() {
   return (
@@ -22,10 +24,12 @@ function App() {
           <Route path="/whos-it-for/consolidators" element={<Consolidators />} />
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/security" element={<Security />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
       <Footer />
-    </Router>
+    </Router> 
   );
 }
 

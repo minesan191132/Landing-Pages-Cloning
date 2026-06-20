@@ -93,8 +93,6 @@ function Security() {
 
   return (
     <div className={styles.pageWrapper}>
-      <Header />
-
       <section className={styles.heroSection}>
         <div className={styles.heroBackground}></div>
         <div className={styles.heroImageWrapper}>
